@@ -23,7 +23,9 @@ key <- cimisKey[["CIMIS-API-KEY"]]
 station <- "&targets=231"
 start <- "&startDate=2018-01-01"
 end <- paste("&endDate=", Sys.Date(), sep="")
-apiString <- paste(baseURL, key, station, start, end, sep="")
+units <- "&unitOfMeasure=M"
+# units <- "&unitOfMeasure=E"   # default = english units
+apiString <- paste(baseURL, key, station, start, end, units, sep="")
 data <- fromJSON(apiString)
 data.df <- as.data.frame(data)
 df2.df <- as.data.frame(data.df$Data.Providers.Records)
@@ -57,7 +59,7 @@ ggplot(data = df2.df, aes(x=Julian)) +
   geom_line(aes(y = DayAirTmpMax), colour = "red") +
   geom_line(aes(y = DayAirTmpAvg), colour = "green") +
   geom_line(aes(y = DayAirTmpMin), colour = "blue") +
-  ylim(0,90) +
+  ylim(-10,50) +
   labs(y = "air temp")
 ```
 
