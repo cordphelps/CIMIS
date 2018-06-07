@@ -57,7 +57,8 @@ ggplot(data = df2.df, aes(x=Julian)) +
   geom_line(aes(y = DayAirTmpMax), colour = "red") +
   geom_line(aes(y = DayAirTmpAvg), colour = "green") +
   geom_line(aes(y = DayAirTmpMin), colour = "blue") +
-  ylim(0,90)
+  ylim(0,90) +
+  labs(y = "air temp")
 ```
 
     ## Warning: Removed 1 rows containing missing values (geom_path).
